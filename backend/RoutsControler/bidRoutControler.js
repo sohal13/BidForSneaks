@@ -39,7 +39,6 @@ export const placeBid = async (req, res) => {
     }
 }
 
-
 export const getAllBidsForShoe=async(req,res)=>{
     try {
         const shoeID = req.params.id;
