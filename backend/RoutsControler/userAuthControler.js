@@ -17,7 +17,7 @@ export const userRegister = async (req, res) => {
             return res.status(200).send({ message: `User Exist With This Email`, success: false })
         }
         const hashPassword = bcryptjs.hashSync(password, 10)
-        const userAvtarphoto = userphoto || `https://avatar.iran.liara.run/public/boy?username=${username}`
+        const userAvtarphoto = userphoto || `https://avatar.iran.liara.run/public/boy?username=${useremail}`
 
         const newUser = new User({
             username,
