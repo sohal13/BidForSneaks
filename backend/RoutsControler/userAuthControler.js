@@ -16,6 +16,12 @@ export const userRegister = async (req, res) => {
         if (userPresent) {
             return res.status(200).send({ message: `User Exist With This Email`, success: false })
         }
+        const UserNumber = "+91"+usernumber;
+        const usernumberPresent = await User.findOne({UserNumber})
+        if (usernumberPresent) {
+            return res.status(200).send({ message: `User Exist With This Number`, success: false })
+        }
+        
         const hashPassword = bcryptjs.hashSync(password, 10)
         const userAvtarphoto = userphoto || `https://avatar.iran.liara.run/public/boy?username=${useremail}`
 
@@ -24,7 +30,7 @@ export const userRegister = async (req, res) => {
             useremail,
             userphoto: userAvtarphoto,
             password: hashPassword,
-            usernumber
+            usernumber:UserNumber
         })
 
         if (newUser) {
@@ -36,6 +42,7 @@ export const userRegister = async (req, res) => {
             success: true,
             message: "User Register Succesfull",
             useris: {
+                _id:newUser._id,
                 name: newUser.username,
                 email: newUser.useremail,
                 photo: newUser.userphoto,

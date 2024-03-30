@@ -1,0 +1,31 @@
+.curved-corner {
+    position: relative;
+    overflow: hidden;
+
+}
+
+
+.curved-corner::before,
+.curved-corner::after {
+  content: '';
+  position: absolute;
+  background-color: #178ad6; /* Adjust color as needed */
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.curved-corner::before {
+  top: -50px; /* Adjust distance from top for top-right corner */
+  right: -50px; /* Adjust distance from right for top-right corner */
+  width: 350px; /* Adjust width of the curved corner for top-right corner */
+  height: 350px; /* Adjust height of the curved corner for top-right corner */
+}
+
+.curved-corner::after {
+  bottom: -50px; /* Adjust distance from bottom for bottom-left corner */
+  left: -50px; /* Adjust distance from left for bottom-left corner */
+  width: 350px; /* Adjust width of the curved corner for bottom-left corner */
+  height: 350px; /* Adjust height of the curved corner for bottom-left corner */
+}
+
+
