@@ -39,14 +39,15 @@ try {
     console.log(data.message);
     return toast.error(data.message, {position: "top-center", autoClose: 1000,hideProgressBar: false,closeOnClick: true,pauseOnHover: false,draggable: true,progress: undefined,theme: "dark",transition: Bounce,})
   }
+  toast.success(data.message, {position: "top-center", autoClose: 1000,hideProgressBar: false,closeOnClick: true,pauseOnHover: false,draggable: true,progress: undefined,theme: "dark",transition: Bounce,})
   localStorage.setItem('BidForSneaks',JSON.stringify(data));
   setLoading(false)
-  navigate('/login')
+  navigate('/verifynumber')
 
 } catch (error) {
   setLoading(false)
-  return toast.error(error?.response?.data.message, {position: "top-center", autoClose: 1000,hideProgressBar: false,closeOnClick: true,pauseOnHover: false,draggable: true,progress: undefined,theme: "dark",transition: Bounce,});
   console.log(error);
+  return toast.error(error?.response?.data.message, {position: "top-center", autoClose: 1000,hideProgressBar: false,closeOnClick: true,pauseOnHover: false,draggable: true,progress: undefined,theme: "dark",transition: Bounce,});
 }
   }
 

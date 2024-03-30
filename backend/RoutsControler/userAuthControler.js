@@ -65,7 +65,7 @@ export const userNumberVerify = async (req, res) => {
 
     try {
         const { usernumber } = req.body;
-        const userPresent = await User.findById(usernumber)
+        const userPresent = await User.findOne({usernumber})
         if (!usernumber) return res.status(500).send({ message: `Number Required`, success: false })
         if (usernumber !== req.user.usernumber) return res.status(500).send({ message: `User Registered Numbers`, success: false })
         if (!userPresent) return res.status(500).send({ message: `Register First`, success: false })
@@ -119,7 +119,6 @@ export const otpVerify = async (req, res) => {
     try {
         const { otp } = req.body;
         const usernumber = req.user.usernumber
-        console.log(usernumber);
         const userPresent = await User.findOne({usernumber})
         if (!userPresent) return res.status(500).send({ message: `Regsiter First`, success: false })
         if (!otp) return res.status(500).send({ message: `OTP Required`, success: false })
@@ -130,6 +129,7 @@ export const otpVerify = async (req, res) => {
         if (!prsntUser) return res.status(404).send({ success: false, message: "No user Find with this Number" })
         res.status(200).send({
             message: "OTP Verifyed", success: true, useris: {
+                _id:userPresent._id,
                 name: userPresent.username,
                 email: userPresent.useremail,
                 photo: userPresent.userphoto,
@@ -158,9 +158,11 @@ export const userLogin = async (req, res) => {
             success: true,
             message: "User Login Succesfull",
             useris: {
+                _id:user._id,
                 name: user.username,
                 email: user.useremail,
                 photo: user.userphoto,
+                number: user.usernumber
             }
         })
     } catch (error) {

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/register',userRegister)
 router.post('/number-verify',isMiddleWare,userNumberVerify)
-router.get('/number-verify/otp',isMiddleWare,otpVerify)
+router.post('/number-verify/otp',isMiddleWare,otpVerify)
 router.post('/login',userLogin)
 router.post('/logout',userLogout)
 
