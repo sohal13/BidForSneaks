@@ -25,6 +25,10 @@ const userSchema = mongoose.Schema({
         required:true,
         unique:true
     },
+    role:{
+        type:Number,
+        default:0
+    },
     userotpID:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Otp'
