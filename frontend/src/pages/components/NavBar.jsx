@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaBarsStaggered } from "react-icons/fa6";
-import Logo from '../../../assets/images/logo.png'
+import Logo from '../../assets/images/logo.png'
 import { FaSearch } from "react-icons/fa";
 import { FaUserLarge } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
