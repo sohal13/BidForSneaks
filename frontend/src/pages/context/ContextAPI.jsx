@@ -8,8 +8,7 @@ export const useAuth = () => {
 
 export const AuthContextProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(
-    JSON.parse(localStorage.getItem('BidForSneaks')) || null
-  );
+    JSON.parse(localStorage.getItem("BidForSneaks")) || null);
   return (
     <AuthContext.Provider value={{ authUser, setAuthUser }}>
       {children}

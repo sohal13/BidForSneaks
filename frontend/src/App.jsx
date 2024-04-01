@@ -7,6 +7,7 @@ import Login from './pages/Login/Login.jsx';
 import VerifyNumber from './pages/register/VerifyNumber.jsx';
 import VerifyOtp from './pages/register/VerifyOtp.jsx';
 import { VerifyIsUserLogin } from './pages/utils/VerfiyIsUserLogin.jsx';
+import ListShoes from './pages/forSellers/ListShoes.jsx';
 
 function App() {
 
@@ -18,10 +19,10 @@ function App() {
     <Route path='/verifynumber' element={<VerifyNumber/>}/>
     <Route path='/verifynumber/otp' element={<VerifyOtp/>}/>
     <Route path='/login' element={<Login/>}/>
-    <Route element={<VerifyIsUserLogin/>}>
     <Route path='/' element={<Home/>}/>
+    <Route element={<VerifyIsUserLogin/>}>
     </Route>
-
+    <Route path='/listshoes' element={<ListShoes/>}/>
         </Routes>
         <ToastContainer/>
        </div>

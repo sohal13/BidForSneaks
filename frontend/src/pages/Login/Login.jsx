@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Bounce, toast } from 'react-toastify';
 
 const Login = () => {
@@ -60,6 +60,11 @@ try {
               {loading ? 'Loging..':'Login'}
             </button>
             </form>
+            <div className='p-2'>
+                    <p className='text-sm font-semibold'> Don't have an AcCount ? <Link to={'/register'} ><span className='text-yellow-600 font-bold underline cursor-pointer hover:text-gray-950'>
+                        Regsiter Now!!</span></Link>
+                    </p>
+                </div>
         </div>
       </div>
     </div>
