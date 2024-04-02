@@ -34,16 +34,19 @@ const PopularShoe = () => {
         {loading ? (<div className="w-full flex justify-center">
             <div className="loading loading-spinner loading-lg items-center"></div>
         </div>):(
-     <div className='grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-10 justify-center p-2'>
+            <div className='flex justify-center'>
+     <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-10 items-center p-2'>
            {shoes.map((shoe)=>(
-                <Link to={`/shoes/${shoe._id}`}><div key={shoe._id} className='w-64 bg-blue-900 rounded-lg hover:scale-105'>
+                <Link to={`/shoes/${shoe._id}`}>
+                    <div key={shoe._id} className='w-64 bg-blue-900 rounded-lg hover:scale-105 self-center'>
                     <h1 className='p-1 text-sm font-bold text-white'>{shoe.name}</h1>
                     <img src={shoe.imageUrls[0]}  alt='shoes.png' className='h-64 w-full object-cover'/>
                     <h1 className='flex justify-between p-1 text-sm text-white'>Price:₹{shoe.price} <span className='font-bold'>{shoe?.topBid && `TopBid:₹${shoe?.topBid}`}</span> </h1>
                 </div>
                 </Link>
            ))}
-        </div>)
+        </div>
+            </div>)
 }
         </div>
   )
