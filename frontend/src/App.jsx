@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <div className='w-full h-screen bg-white'>
+      <div className='w-full h-screen bg-white text-black'>
         <Routes>
     <Route path='/register' element={<Register/>}/>
     <Route path='/verifynumber' element={<VerifyNumber/>}/>
