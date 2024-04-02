@@ -4,6 +4,7 @@ import Shoe from "../Schema/shoesSchema.js";
 export const listShoe=async(req,res)=>{
     try {
         const {name,brand,size,color,price,imageUrls,description ,auctionEndDate,selleris} = req.body;
+        console.log(req.body);
         const seller = req.user._id;
         if(seller.toString() !== selleris.toString()) return res.status(404).send({message:"Invalid Seller"})
         if(!seller)  return res.status(404).send({message:"Login First to List Product",success:false});

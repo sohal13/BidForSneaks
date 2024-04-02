@@ -42,10 +42,6 @@ const shoeSchema = mongoose.Schema({
         type: Date, 
         required: true 
     },
-    category:{
-        type:String,
-        required:true,
-    },
     seller: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 
