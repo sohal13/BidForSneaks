@@ -11,6 +11,7 @@ import ListShoes from './pages/forSellers/ListShoes.jsx';
 import SingleShoe from './pages/shoes/SingleShoe.jsx';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Cart from './pages/Cart/Cart.jsx';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
     <Route element={<VerifyIsUserLogin/>}>
     </Route>
     <Route path='/listshoes' element={<ListShoes/>}/>
+    <Route path='/cart' element={<Cart/>}/>
         </Routes>
         <ToastContainer/>
        </div>

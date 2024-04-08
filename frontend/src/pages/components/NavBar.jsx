@@ -8,11 +8,12 @@ import { ImCancelCircle } from "react-icons/im";
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/ContextAPI';
 import { RiLoginBoxFill } from "react-icons/ri";
+import { userCart } from '../context/cartContectApi';
 
 const NavBar = () => {
 
     const { authUser } = useAuth();
-
+    const {cart} = userCart();
     const [showSearchDropdown, setShowSearchDropdown] = useState(false);
     const [showSidebar, setShowSidebar] = useState(false);
 
@@ -47,8 +48,8 @@ const NavBar = () => {
                         </li>): (<li onClick={toggleSearchDropdown} className='flex justify-center cursor-pointer items-center bg-blue-800 text-white rounded-md p-1'>
                             <FaSearch className='md:xl md' /><span className='hidden md:flex'>Search</span>
                         </li>)}
-                        <Link to={'/cart'}><li className='flex justify-center cursor-pointer items-center  bg-blue-800 text-white rounded-md p-1'>
-                            <FaShoppingCart className='md:xl md' /><span className='hidden md:flex'>Cart</span>
+                        <Link to={'/cart'}><li className='flex justify-center cursor-pointer items-center  bg-blue-800 text-white rounded-md p-1 relative'>
+                            <FaShoppingCart className='md:xl md' /><span className='hidden md:flex'>Cart</span><span className='text-sm absolute top-[-5px] right-[-5px] w-5 h-5 text-center bg-orange-700 rounded-full '>{cart[0] === null ? 0 : cart?.length}</span>
                         </li>
                         </Link>
                         {!authUser ? (<Link to={'/login'}><li className='flex justify-center cursor-pointer items-center  bg-blue-800 text-white  rounded-md p-1'>

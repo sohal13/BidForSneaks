@@ -10,15 +10,18 @@ import SwiperCore from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle'
 import { MdWatchLater } from "react-icons/md";
+import { userCart } from '../context/cartContectApi';
 
 const SingleShoe = () => {
 
     const { id } = useParams()
+    const {cart,setuserCart} = userCart();
 
     const [shoes, setShoes] = useState([]);
     const [shoeImage, setShoeImage] = useState([])
     const [loading, setLoading] = useState(false);
-    const [showImg, setShowImage] = useState('')
+    const [showImg, setShowImage] = useState('');
+    
     SwiperCore.use([Navigation])
 
     useEffect(() => {
@@ -49,15 +52,37 @@ const SingleShoe = () => {
     }
 
     //date 
-    const dateStr = shoes.auctionEndDate;
+    const dateStr = shoes?.auctionEndDate;
     const date = new Date(dateStr);
     const formattedDate = date.toLocaleDateString();
+
+    const currentDate = new Date()
+    const formatcurrentDate = currentDate.toLocaleDateString()
+
+    //add to cart funtion
+    const handelAddtoCart=(shoes)=>{
+        setuserCart([...cart, shoes])
+        localStorage.setItem('BidForSneaksCart',JSON.stringify([...cart , shoes]))
+        toast.success("Added To Cart" , {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          })
+    }
+    console.log(cart);
     return (
         <div>
             <NavBar />
             <div className='max-w-[98%] mx-auto mt-2 font-sans min-h-screen h-full p-2'>
-                <div className='flex gap-4 flex-col md:flex-row '>
-                    <div className='hidden md:block md:w-[180px]'>
+                <div className={`${loading ? "loading loading-dots w-[100px]" : "hidden"}`}/>
+                <div className={`flex gap-4 flex-col md:flex-row ${loading ? "hidden":""}`}>
+                    <div className='hidden md:block md:max-w-[180px] min-w-[100px]'>
                         {shoeImage.map((innerArray, outerIndex, index) => (
                             <div key={index} className='grid grid-cols-1 gap-2 my-1 w-full'>
                                 {innerArray.map((url, innerIndex) => (
@@ -75,9 +100,9 @@ const SingleShoe = () => {
                         <div className='hidden md:block md:w-[400px]'>
                             {shoeImage.map((innerArray, outerIndex) => (
                                 <div key={outerIndex} className=' relative flex gap-2 my-1 border border-black rounded justify-center'>
-                                    <img src={showImg ? (showImg) : (innerArray[0])} alt="" className='md:h-[400px] w-[400px] h-[300px] ' />
+                                    <img src={showImg ? (showImg) : (innerArray[0])} alt="" className='md:h-[400px] w-[400px] h-[300px] object-cover' />
                                     <div className="absolute bottom-0 gap-4 flex">
-                                        <button className="bg-blue-500 hover:bg-blue-800 text-white px-8 py-2 rounded flex items-center gap-2">
+                                        <button onClick={()=>handelAddtoCart(shoes)} className="bg-blue-500 hover:bg-blue-800 text-white px-8 py-2 rounded flex items-center gap-2">
                                             Add to Cart<FaShoppingCart size={20}/>
                                         </button>
                                         <button className="bg-orange-500 hover:bg-orange-700 text-white px-8 py-2 rounded flex items-center gap-2">
@@ -106,7 +131,7 @@ const SingleShoe = () => {
                                 ))}
                         </Swiper>
                         <div className="gap-2 flex  md:hidden justify-center">
-                                        <button className="bg-blue-500 hover:bg-blue-800 text-white px-8 py-2 rounded flex items-center gap-2">
+                                        <button onClick={()=>handelAddtoCart(shoes)} className="bg-blue-500 hover:bg-blue-800 text-white px-8 py-2 rounded flex items-center gap-2">
                                             Add to Cart<FaShoppingCart size={20}/>
                                         </button>
                                         <button className="bg-orange-500 hover:bg-orange-700 text-white px-8 py-2 rounded flex items-center gap-2">
