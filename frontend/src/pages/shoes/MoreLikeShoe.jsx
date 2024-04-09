@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Bounce, toast } from 'react-toastify'
-import { shoes } from '../../../../backend/RoutsControler/shoesRoutControler';
-
 
 const MoreLikeShoe = ({data}) => {
 

@@ -23,7 +23,7 @@ const Cart = () => {
   return (
     <div>
         <NavBar/>
-        <div className='max-w-[98%] mx-auto mt-2 font-sans min-h-screen h-full p-2'>
+        <div className='max-w-[98%] mx-auto mt-2 font-sans min-h-screen h-full p-2 bg-white text-black'>
             <h1 className='text-center text-2xl font-bold'>{cart.length === 0  ? ("Your Cart Is Empty !!") : ("") }</h1>
             <div className='flex flex-col w-full'>
                 {cart.map((shoes,index)=>(
