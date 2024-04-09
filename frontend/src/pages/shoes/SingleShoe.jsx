@@ -11,6 +11,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle'
 import { MdWatchLater } from "react-icons/md";
 import { userCart } from '../context/cartContectApi';
+import MoreLikeShoe from './MoreLikeShoe';
 
 const SingleShoe = () => {
 
@@ -106,7 +107,7 @@ const SingleShoe = () => {
                                             Add to Cart<FaShoppingCart size={20}/>
                                         </button>
                                         <button className="bg-orange-500 hover:bg-orange-700 text-white px-8 py-2 rounded flex items-center gap-2">
-                                            Buy Now<AiFillThunderbolt size={20}/>
+                                            Bid Now<AiFillThunderbolt size={20}/>
                                         </button>
                                     </div>
                                 </div>
@@ -135,7 +136,7 @@ const SingleShoe = () => {
                                             Add to Cart<FaShoppingCart size={20}/>
                                         </button>
                                         <button className="bg-orange-500 hover:bg-orange-700 text-white px-8 py-2 rounded flex items-center gap-2">
-                                            Buy Now<AiFillThunderbolt size={20}/>
+                                            Bid Now<AiFillThunderbolt size={20}/>
                                         </button>
                                     </div>
 
@@ -154,7 +155,7 @@ const SingleShoe = () => {
                         <h1>Brand : <span className='uppercase '>{shoes.brand}</span></h1>
                     </div>
                 </div>
-                <div>MoreShoes</div>
+                <div><MoreLikeShoe data={shoes} /></div>
             </div>
         </div>
     )

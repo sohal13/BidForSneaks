@@ -8,6 +8,7 @@ const shoeSchema = mongoose.Schema({
     brand: {
         type: String,
         require: true,
+        set: (value) => value.toUpperCase()
     },
     description: { 
         type: String ,

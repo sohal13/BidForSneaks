@@ -134,11 +134,27 @@ export const sellerShose=async(req,res)=>{
             return res.status(404).send({message:"0 Show Listed For Selling",success:false});
         }
         res.status(200).send({
-            success:false,
+            success:true,
             sellerShoes
         })
     } catch (error) {
         console.log(error);
     res.status(500).send({message:`Internal Server Error ${error}`,success:false}) 
     }
+}
+
+export const simmilerShoes=async(req,res)=>{
+try {
+    const {brand} = req.params ;
+    console.log(req.params);
+    const shoes = await Shoe.find({brand})
+    if(!shoes) return  res.status(404).send({message:"No Shoes By This brabd Name",success:false})
+    res.status(200).send({
+        success:true,
+        shoes
+    })
+} catch (error) {
+    console.log(error);
+    res.status(500).send({message:`Internal Server Error ${error}`,success:false}) 
+}
 }
